@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  laravel-app:
+    build: ./
+    container_name: laravel-app
+    volumes:
+      - ./:/var/www
+    restart: unless-stopped
+    ports:
+      - "5001:8000"
+    networks:
+      - pg-network
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_DATABASE: powergames
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: adminadmin
+      MYSQL_ROOT_PASSWORD: rootadmin123
+    volumes:
+      - db-data:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - pg-network
+
+networks:
+  pg-network:
+    driver: bridge
+
+volumes:
+  db-data:
