@@ -18,7 +18,7 @@ services:
     image: mysql:8.0
     container_name: mysql-db
     environment:
-      MYSQL_DATABASE: powergames
+      MYSQL_DATABASE: karini
       MYSQL_USER: admin
       MYSQL_PASSWORD: adminadmin
       MYSQL_ROOT_PASSWORD: rootadmin123
